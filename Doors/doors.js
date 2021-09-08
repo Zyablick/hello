@@ -9,7 +9,7 @@ const synth = window.speechSynthesis;
 
 document.querySelector("#door1").onclick = () => {
   console.log("button clicked");
-  speak("sorry there is nothinig there");
+  speak("sorry there is nothing there");
 };
 
 document.querySelector("#door2").onclick = () => {

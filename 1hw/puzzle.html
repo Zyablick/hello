@@ -1,0 +1,128 @@
+<!doctype html>
+
+<html>
+
+<head>
+  <title> Pierogi Puzzle </title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+  <style>
+
+#part1 {
+  position: absolute;
+  top: 60vh;
+  right: 5vw;
+  width: 11vw;
+}
+
+#part2 {
+  position: absolute;
+  top: 30vh;
+  left: 3vw;
+  width: 10vw;
+}
+
+#part3 {
+  position: absolute;
+  top: 13vh;
+  right: 3vw;
+  width: 12vw;
+}
+
+#part4 {
+  position: absolute;
+  top: 60vh;
+  left: 4vw;
+  width: 15vw;
+}
+
+    #title {
+      position: relative;
+      font-family: Times;
+      /* left: 35vw; */
+      top: 4vh;
+      text-align: center;
+      font-size: 2vw;
+      border-bottom: 3px solid #4d375d;
+      color: #1A4EA2;
+      z-index: -5;
+    }
+
+    #accent {
+      font-weight: bolder;
+    }
+
+#picture {
+position: absolute;
+top:10vh;
+left: 25vw;
+/* top: 70vh; */
+width: 50vw;
+z-index: -10;
+}
+
+#button {
+  position: relative;
+  top: 85vh;
+  left: 40vw;
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+
+}
+
+
+#button2 {
+  position: relative;
+  top: 85vh;
+  left: 45vw;
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #FF5733;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+  display:none;
+
+}
+
+
+</style>
+
+
+</head>
+
+  <body>
+
+    <div id=title> Drag the pieces to their places to get a pic of <span id=accent> Pierogis </span></div>
+
+<img id="picture" src="pic.png">
+<img id="part1" src="part1.png">
+<img id="part2" src="part2.png">
+<img id="part3" src="part3.png">
+<img id="part4" src="part4.png">
+<!-- <div>
+  <button id="button">Ready</button>
+</div> -->
+<button id="button">Ready</button>
+<button id="button2">Yes, I'm done</button>
+
+<script src="puzzle.js"></script>
+
+</body>
+</html>
