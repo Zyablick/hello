@@ -3,7 +3,7 @@
 // then go to http://localhost:3000 in your browser
 
 const SpeechRecognition = webkitSpeechRecognition; //eslint-disable-line
-const giphyAPIKey = "563492ad6f91700001000001a488efece6054352b11e2c69639977f6"; // sign up and create an app to get one: https://developers.giphy.com/
+// const giphyAPIKey = "YOUR API KEY"; // sign up and create an app to get one: https://developers.giphy.com/
 
 const getSpeech = () => {
 	const recognition = new SpeechRecognition();
@@ -34,7 +34,7 @@ const getGif = (phrase) => {
 	// let url = "http://api.giphy.com/v1/gifs/random?api_key=" + giphyAPIKey + "&tag=" + phrase;
 	// more info: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
 
-	const url = `https://api.pexels.com/v1/random?api_key=${giphyAPIKey}&tag=${phrase}`;
+	const url = `https://api.pexels.com/v1/search?api_key=563492ad6f91700001000001a488efece6054352b11e2c69639977f6&query=nature&per_page=1`;
 
 	// const url = `https://api.giphy.com/v1/gifs/random?api_key=${giphyAPIKey}&tag=${phrase}`;
 
