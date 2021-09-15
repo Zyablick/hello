@@ -4,13 +4,13 @@
 
 const SpeechRecognition = webkitSpeechRecognition; //eslint-disable-line
 // const giphyAPIKey = "563492ad6f91700001000001a488efece6054352b11e2c69639977f6"; // sign up and create an app to get one: https://developers.giphy.com/
-const giphyAPIKey = "FrOAIbQ7unfWpWi70vB7i7dhSvzYC32t"; // sign up and create an app to get one: https://developers.giphy.com/
+// const giphyAPIKey = "FrOAIbQ7unfWpWi70vB7i7dhSvzYC32t"; // sign up and create an app to get one: https://developers.giphy.com/
 
 
 const getSpeech = () => {
 	const recognition = new SpeechRecognition();
 	recognition.lang = "en-US";
-	recognition.start();
+	//recognition.start();
 
 	recognition.onresult = (event) => {
 		const speechResult = event.results[0][0].transcript;
@@ -22,7 +22,6 @@ const getSpeech = () => {
 	recognition.onend = () => {
 		console.log("it is over");
 		recognition.stop();
-
 		getSpeech();
 	};
 
@@ -36,22 +35,32 @@ const getGif = (phrase) => {
 	// let url = "http://api.giphy.com/v1/gifs/random?api_key=" + giphyAPIKey + "&tag=" + phrase;
 	// more info: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
 
-	// const url = `https://api.pexels.com/v1/search?api_key=${giphyAPIKey}&tag=${phrase}`;
+const apiKey = `4ArsnnZj946fNPCiyorHi4mPg2ypzVNUBw-vK3bCb48`;
+const api_key_music = `027eb8rCFX754MhNnOKVc2o6LWsDHQF5FFPrxrAivc6O7ijzlJEKXR7q`;
 
-	const url = `https://api.giphy.com/v1/gifs/random?api_key=${giphyAPIKey}&tag=${phrase}`;
+const testUrl = `https://api.happi.dev/v1/music?q=${phrase}&limit=&apikey=${api_key_music}&type=&lyrics=1`;
+	const url = `https://api.unsplash.com/photos/random?query=${phrase}&?client_id=${apiKey}`;
 
 	// const url = `https://api.giphy.com/v1/gifs/random?api_key=${giphyAPIKey}&tag=${phrase}`;
 
 	// more info: https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
-	fetch(url, { mode: "cors" })
+	fetch(testUrl, { mode: "cors" })
 		.then((response) => response.json())
 		.then((result) => {
-			let imgUrl = result.data.image_url;
-			document.querySelector("#the-gif").src = imgUrl;
-			console.log(imgUrl);
+			const song= result.result[0];
+			console.log(song);
+
+			console.log('in response');
+			//console.log(result);
+			// let imgUrl = result.data.image_url;
+			// document.querySelector("#the-gif").src = imgUrl;
+			// console.log(imgUrl);
 		});
 };
 
 document.querySelector("#my-button").onclick = () => {
-	getSpeech();
+	//getSpeech();
+	let speechResult = "ocean";
+	getGif(speechResult);
+
 };
