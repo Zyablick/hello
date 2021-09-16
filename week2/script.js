@@ -3,9 +3,25 @@
 // then go to http://localhost:3000 in your browser
 
 const SpeechRecognition = webkitSpeechRecognition; //eslint-disable-line
-// const giphyAPIKey = "563492ad6f91700001000001a488efece6054352b11e2c69639977f6"; // sign up and create an app to get one: https://developers.giphy.com/
+
 const APIKey = "c39f256d-8e6a-429a-bc00-7ad7d6ab4cf8"; // sign up and create an app to get one: https://developers.giphy.com/
 
+document.querySelector("#my-button").onclick = () => {
+	getSpeech();
+};
+
+
+const handleSpeechInput = (initialWords) => {
+	console.log(initialWords)
+	const lowerCased = initialWords.toLowerCase();
+
+	if(initialWords === initialWords.toString()){
+		return 1;
+	}
+	if(initialWords === initialWords.toString()){
+		return 2;
+	}
+}
 
 const getSpeech = () => {
 	const recognition = new SpeechRecognition();
@@ -15,14 +31,17 @@ const getSpeech = () => {
 	recognition.onresult = (event) => {
 		const speechResult = event.results[0][0].transcript;
 		console.log(speechResult);
+
 		document.querySelector("#speech-div").textContent = speechResult;
-		getGif(speechResult);
+
+		const analyzedAnswer = handleSpeechInput(speechResult);
+		getImg(analyzedAnswer);
 	};
 
 	recognition.onend = () => {
 		console.log("it is over");
 		recognition.stop();
-		getSpeech();
+
 	};
 
 	recognition.onerror = (event) => {
@@ -30,29 +49,22 @@ const getSpeech = () => {
 	};
 };
 
-const getGif = (phrase) => {
-	// same as:
+
+const getImg = (num) => {
+	console.log("in get img");
+	console.log('query: ',num);
 	// let url = "http://api.giphy.com/v1/gifs/random?api_key=" + giphyAPIKey + "&tag=" + phrase;
-	// more info: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
-
-const testUrl = `https://thecatapi.com/v1/images/random?api_key=${APIKey}&id=${phrase}`;
-
+	const catUrl = `https://api.thecatapi.com/v1/images/search?category_ids=${num}&api_key=${APIKey}`;
 	// const url = `https://api.giphy.com/v1/gifs/random?api_key=${giphyAPIKey}&tag=${phrase}`;
-
-	// more info: https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
-	fetch(testUrl, { mode: "cors" })
+	fetch(catUrl, { mode: "cors" })
 		.then((response) => response.json())
 		.then((result) => {
 			// const song = result.result[0];
+			// console.log(result);
+			let imgURL = result[0].url;
 
-			let imgUrl = result.data.image_url[0];
-			document.querySelector("#the-gif").src = imgUrl;
-			console.log(imgUrl);
+			// let imgUrl = result.data.image_url[0];
+			document.querySelector("#the-gif").src = imgURL;
+			console.log(imgURL);
 		});
-};
-
-document.querySelector("#my-button").onclick = () => {
-	getSpeech();
-
-
 };
