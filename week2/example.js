@@ -35,7 +35,7 @@ const getGif = (phrase) => {
 	// let url = "http://api.giphy.com/v1/gifs/random?api_key=" + giphyAPIKey + "&tag=" + phrase;
 	// more info: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals
 
-const testUrl = `https://thecatapi.com/v1/images/random?api_key=${APIKey}&tag=${phrase}`;
+const testUrl = `https://thecatapi.com/v1/images/random?api_key=${APIKey}&id=${phrase}`;
 
 	// const url = `https://api.giphy.com/v1/gifs/random?api_key=${giphyAPIKey}&tag=${phrase}`;
 
